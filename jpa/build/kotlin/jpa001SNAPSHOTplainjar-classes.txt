@@ -1,0 +1,1 @@
+/Users/jin-choi/comento_kotlinspringboot_v1/jpa/build/classes/kotlin/main/com/example/jpa/JpaApplication.class:/Users/jin-choi/comento_kotlinspringboot_v1/jpa/build/classes/kotlin/main/com/example/jpa/JpaApplicationKt.class
