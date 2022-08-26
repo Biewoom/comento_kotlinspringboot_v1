@@ -19,6 +19,7 @@ class PersonService {
             "asc" -> {
                 ascSort(personList, sortBy)
             }
+
             else -> {
                 throw IllegalArgumentException()
             }
@@ -77,5 +78,21 @@ class PersonService {
                 throw IllegalArgumentException()
             }
         }
+    }
+
+    /**
+     * person 사용자 지정 필터링 함수
+     */
+    fun filterPersonLogic(
+        persons: List<Person>,
+        ageCutoff: Int,
+        heightCutoff: Int,
+        except: List<String>
+    ): List<Person> {
+
+        return persons
+            .filter { it.age >= ageCutoff }
+            .filter { it.height >= heightCutoff }
+            .filter { it.id !in except }
     }
 }
