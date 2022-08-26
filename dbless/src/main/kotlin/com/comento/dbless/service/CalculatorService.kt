@@ -15,6 +15,9 @@ class CalculatorService {
         }
     }
 
+    /**
+     * String util : 소수점 자리수 리턴
+     */
     private fun String.getDecimalPlace(): Int {
         val str_arr = this.split(".")
 
@@ -25,6 +28,9 @@ class CalculatorService {
         }
     }
 
+    /**
+     * 소수점 아래 내림 함수
+     */
     private fun Double.round(digits : Int):Double {
         return Math.floor(this * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
     }
