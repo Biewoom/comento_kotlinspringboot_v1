@@ -1,5 +1,6 @@
 package com.comento.dbless.presentation
 
+import com.comento.dbless.presentation.dto.Cutoff
 import com.comento.dbless.presentation.dto.Person
 import com.comento.dbless.presentation.dto.Persons
 import com.comento.dbless.service.PersonListService
@@ -14,7 +15,11 @@ class PersonController(private val personListService: PersonListService) {
 
     @PostMapping("/sort")
     fun sortPersons(@RequestBody people: Persons): List<Person>{
-
         return personListService.sortPersons(people)
+    }
+
+    @PostMapping("/filter")
+    fun filterPersons(@RequestBody cutoff: Cutoff): List<Person> {
+        return personListService.filterPersons(cutoff)
     }
 }

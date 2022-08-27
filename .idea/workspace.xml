@@ -62,7 +62,7 @@
         <entry key="$PROJECT_DIR$" value="choi/main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/jpa" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,6 +103,9 @@
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="DblessApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="root.dbless.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.comento.dbless.DblessApplication" />
@@ -133,6 +136,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #4" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
       </list>
@@ -147,7 +151,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661607442283</updated>
       <workItem from="1661607446437" duration="16000" />
-      <workItem from="1661607475851" duration="2792000" />
+      <workItem from="1661607475851" duration="3443000" />
     </task>
     <servers />
   </component>

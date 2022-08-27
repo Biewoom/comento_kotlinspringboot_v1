@@ -1,5 +1,6 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.presentation.dto.Cutoff
 import com.comento.dbless.presentation.dto.Person
 import com.comento.dbless.presentation.dto.Persons
 import org.springframework.stereotype.Service
@@ -22,6 +23,16 @@ class PersonListService {
             "asc" -> sortedPeoople
             "des" -> sortedPeoople.reversed()
             else -> throw IllegalArgumentException("wrong sortOrder")
+        }
+    }
+
+    fun filterPersons(@RequestBody cutoff: Cutoff): List<Person>{
+        val (ageCutoff, heightCutoff, except, people) = cutoff
+
+        return people.filter{
+            it.age >= (ageCutoff ?: 0) && it.height >= (heightCutoff ?: 0)
+        }.filter {
+            it.id !in (except ?: emptyList())
         }
     }
 }

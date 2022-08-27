@@ -1,3 +1,138 @@
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"],
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID10401",
+      "name": "Alice",
+      "age": 61,
+      "height": 163
+    },
+    {
+      "id": "ID1324",
+      "name": "Holand",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1031",
+      "name": "Junior",
+      "age": 40,
+      "height": 179
+    },
+    {
+      "id": "ID1323",
+      "name": "Goose",
+      "age": 34,
+      "height": 171
+    }
+  ]
+}
+
+<> 2022-08-27T234049.200.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"],
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID10401",
+      "name": "Alice",
+      "age": 61,
+      "height": 163
+    },
+    {
+      "id": "ID1324",
+      "name": "Holand",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1031",
+      "name": "Junior",
+      "age": 40,
+      "height": 179
+    },
+    {
+      "id": "ID1323",
+      "name": "Goose",
+      "age": 34,
+      "height": 171
+    }
+  ]
+}
+
+<> 2022-08-27T233951.404.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID10401",
+      "name": "Alice",
+      "age": 61,
+      "height": 163
+    },
+    {
+      "id": "ID1324",
+      "name": "Holand",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1031",
+      "name": "Junior",
+      "age": 40,
+      "height": 179
+    },
+    {
+      "id": "ID1323",
+      "name": "Goose",
+      "age": 34,
+      "height": 171
+    }
+  ],
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"]
+}
+
+<> 2022-08-27T233841.404.json
+
+###
+
 POST http://localhost:8080/api/v1/persons/sort
 Content-Type: application/json
 
