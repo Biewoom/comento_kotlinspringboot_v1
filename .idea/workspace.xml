@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01b4f54b-65a6-43cf-a142-86f1d67fc2ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dbless/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbless/src/main/kotlin/com/comento/dbless/DblessApplication.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbless/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbless/src/test/kotlin/com/comento/dbless/DblessApplicationTests.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpa/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpa/src/main/kotlin/com/comento/jpa/JpaApplication.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpa/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpa/src/test/kotlin/com/comento/jpa/JpaApplicationTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +37,24 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="root" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -93,7 +96,13 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.JpaApplication">
+  <component name="RunManager" selected="Spring Boot.DblessApplication (1)">
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="DblessApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="root.dbless.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.comento.dbless.DblessApplication" />
@@ -122,6 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+        <item itemvalue="HTTP Request.generated-requests | #1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -132,7 +147,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661607442283</updated>
       <workItem from="1661607446437" duration="16000" />
-      <workItem from="1661607475851" duration="1228000" />
+      <workItem from="1661607475851" duration="2792000" />
     </task>
     <servers />
   </component>

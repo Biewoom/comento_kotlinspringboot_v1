@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-08-27T14:26:40.350+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/api/v1/persons/sort"
+}
