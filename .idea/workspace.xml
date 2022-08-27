@@ -75,6 +75,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -104,6 +108,9 @@
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" requestIdentifier="#5" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="DblessApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -136,6 +143,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #5" />
         <item itemvalue="HTTP Request.generated-requests | #4" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
@@ -151,7 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661607442283</updated>
       <workItem from="1661607446437" duration="16000" />
-      <workItem from="1661607475851" duration="3443000" />
+      <workItem from="1661607475851" duration="4689000" />
     </task>
     <servers />
   </component>
