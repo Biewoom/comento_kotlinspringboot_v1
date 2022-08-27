@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="11">
+      <module name="com.comento.root.main" target="11" />
+      <module name="com.comento.root.test" target="11" />
+      <module name="dbless" target="11" />
+      <module name="dbless.main" target="11" />
+      <module name="dbless.test" target="11" />
+      <module name="jpa" target="11" />
+      <module name="jpa.main" target="11" />
+      <module name="jpa.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
