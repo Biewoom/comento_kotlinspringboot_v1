@@ -7,6 +7,7 @@ import com.comento.dbless.domain.Num
 import com.comento.dbless.domain.Pow
 import com.comento.dbless.domain.Sum
 import com.comento.dbless.domain.Time
+import com.comento.dbless.logger
 import com.comento.dbless.toNumber
 import com.comento.dbless.toRound
 import org.slf4j.LoggerFactory
@@ -23,9 +24,15 @@ private inline fun <T> List<T>.firstIndexOrNull(predicate: (T) -> Boolean): Int?
 
 @Service
 class CalculatorService {
-    private val logger = LoggerFactory.getLogger(javaClass)
+    fun getRandomNum(range: String): Number {
 
-    fun getRandomNum(start: String, end: String): Number {
+        if (!range.contains("~")) throw IllegalArgumentException("request should contain `~`")
+
+        val numbers = range.filter { !it.isWhitespace() }.split("~")
+
+        if ( numbers.size != 2 ) throw IllegalArgumentException("request should contain `2 number values`")
+
+        val (start, end) = numbers
         logger.info("start: $start , end: $end")
 
         val startNum = start.toNumber()
@@ -64,6 +71,7 @@ class CalculatorService {
                 num = ""
             }
             else{
+                if ( !it.isDigit() ) throw IllegalArgumentException("`$it` should be digit ")
                 num += it
             }
         }
@@ -104,7 +112,7 @@ class CalculatorService {
                 parseExpression(ll.subList(it + 1, ll.size))
             )
         }
-        throw RuntimeException()
+        throw IllegalArgumentException("$ll cannot reach this line")
     }
 
 }

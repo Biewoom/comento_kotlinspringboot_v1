@@ -1,5 +1,6 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.logger
 import com.comento.dbless.presentation.dto.FilterRequest
 import com.comento.dbless.presentation.dto.Person
 import com.comento.dbless.presentation.dto.Persons
@@ -8,8 +9,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class PersonListService {
-
-    private val logger = LoggerFactory.getLogger(javaClass)
 
     fun sortPersons(persons: Persons): List<Person> {
         val (personList, sortBy, sortOrder) = persons
