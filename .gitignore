@@ -239,3 +239,4 @@ logs/
 !**/src/main/**/build/
 !**/src/test/**/build/
 .gradle/**
+/.idea/**
