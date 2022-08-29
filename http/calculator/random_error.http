@@ -1,0 +1,17 @@
+### case 1
+GET http://localhost:8080/api/v1/calculator/generate/5-1000
+
+> {%
+  client.test("error_case_1: success", function() {
+    client.assert(response.status === 400, "Response status is not 400");
+  });
+%}
+
+### case 2
+GET http://localhost:8080/api/v1/calculator/generate/a~b
+
+> {%
+  client.test("error_case_2: success", function() {
+    client.assert(response.status === 400, "Response status is not 400");
+});
+%}
