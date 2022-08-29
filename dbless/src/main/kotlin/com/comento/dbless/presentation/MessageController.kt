@@ -2,6 +2,8 @@ package com.comento.dbless.presentation
 
 import com.comento.dbless.presentation.dto.Message
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.media.ArraySchema
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -19,42 +21,34 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1")
 class MessageController {
 
-    // Rest Controller + Mapping Annotation 으로 API 구성
-
-    /**
-     * "hello"를 출력
-     */
-    @GetMapping("/hello")
-    fun sayHell(): String {
-        return "hello"
-    }
-
-    /**
-     * 메시지 목록 출력
-     */
+    @Operation(summary = "Get all messages")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Found All messages",
+            content = [Content(mediaType = "application/json", array = ArraySchema(schema = Schema(implementation = Message::class)))]
+        )
+    ])
     @GetMapping("/messages/all")
     fun getAllMessages() = messages
 
-    /**
-     * 하나의 메시지를 출력
-     */
-    @Operation(summary = "Get a message by it's id") // 1. Operation
-    @ApiResponses(
-        value = [
-            ApiResponse(
-                responseCode = "200", description = "Found the Message",
-                content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]
-            ), // 2. ApiResponse
-            ApiResponse(responseCode = "400", description = "Invalid Id supplied", content = [Content()]),
-            ApiResponse(responseCode = "404", description = "Message Not Found", content = [Content()])
-        ]
-    )
+    @Operation(summary = "Get a message by it's id")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Found the Message",
+            content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]),
+        ApiResponse(responseCode = "400", description = "Invalid Id supplied", content = [Content()]),
+        ApiResponse(responseCode = "404", description = "Message Not Found", content = [Content()])
+    ])
     @GetMapping("/messages/{id}")
-    fun getOneMessage(@PathVariable("id") id: String) = messages.find { it.id == id }
+    fun getOneMessage(@Parameter(required = true, description = "Id of Message to be searched", example = "id1") @PathVariable("id") id: String) = messages.find { it.id == id }
 
-    /**
-     * 메시지를 저장
-     */
+    @Operation(summary = "Insert a New Message")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Inserting a new message is Succeed",
+            content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]
+        ),
+        ApiResponse(responseCode = "400", description = "Inserting A new Message is failed",
+            content = [Content()]
+        )
+    ])
     @PostMapping("/messages")
     fun sendMessage(@RequestBody message: Message): Message {
         messages.add(message)
@@ -62,18 +56,27 @@ class MessageController {
         return message
     }
 
-    /**
-     * 해당 ID의 메시지를 삭제
-     */
+    @Operation(summary = "Delete a existed Message by it's id")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Deleting a Existed Message is Succeed",
+            content = [Content(mediaType = "application/json", schema = Schema(implementation = String::class, example = "id1"))]
+        )
+    ])
     @DeleteMapping("/messages/{id}")
-    fun deleteOneMessage(@PathVariable("id") id: String): String {
+    fun deleteOneMessage(@Parameter(required = true, description = "Id of Message to be removed", example = "id1") @PathVariable("id") id: String): String {
         messages.removeIf { it.id == id }
         return id
     }
 
-    /**
-     * 메시지를 삭제하고 새로 추가 ( 수정 )
-     */
+    @Operation(summary = "Update a exited Message Or Insert a new Message")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Update Message is Succeed",
+            content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]
+        ),
+        ApiResponse(responseCode = "400", description = "Update Message is failed",
+            content = [Content()]
+        )
+    ])
     @PutMapping("/messages")
     fun putOneMessage(@RequestBody message: Message): Message {
         messages.removeIf { it.id == message.id }
@@ -82,7 +85,6 @@ class MessageController {
         return message
     }
 
-    // Sample Data Set
     companion object {
         val messages = mutableListOf(
             Message("id1", "Good"),

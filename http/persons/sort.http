@@ -1,0 +1,18 @@
+### sort case 1
+POST  http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+< ../../dbless/src/main/resources/static/json/personList/sort/case1.json
+
+### sort case 2
+POST  http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+< ../../dbless/src/main/resources/static/json/personList/sort/case2.json
+
+### sort case 3
+POST  http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+< ../../dbless/src/main/resources/static/json/personList/sort/case3.json
+

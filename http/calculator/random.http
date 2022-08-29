@@ -38,12 +38,12 @@ GET http://localhost:8080/api/v1/calculator/generate/1.5~5.5
 });
 %}
 
-### case 4
+### case 5
 GET http://localhost:8080/api/v1/calculator/generate/100.5111~1032.12
 
 
 > {%
-  client.test("case_4: success", function() {
+  client.test("case_5: success", function() {
     client.assert(response.body >= 100.5111 && response.body <= 1032.12, "Response is not betwwen 1.5~5.5")
     client.assert(response.status === 200, "Response status is not 200");
 });

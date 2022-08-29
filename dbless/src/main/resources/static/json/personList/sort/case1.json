@@ -1,0 +1,24 @@
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ],
+  "sortBy": "name",
+  "sortOrder": "asc"
+}

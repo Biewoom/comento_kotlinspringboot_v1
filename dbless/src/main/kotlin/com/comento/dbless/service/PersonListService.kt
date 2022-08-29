@@ -1,5 +1,6 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.logger
 import com.comento.dbless.presentation.dto.FilterRequest
 import com.comento.dbless.presentation.dto.Person
 import com.comento.dbless.presentation.dto.Persons
@@ -8,8 +9,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class PersonListService {
-
-    private val logger = LoggerFactory.getLogger(javaClass)
 
     fun sortPersons(persons: Persons): List<Person> {
         val (personList, sortBy, sortOrder) = persons
@@ -30,8 +29,8 @@ class PersonListService {
     }
 
     fun filterPersons(filterRequest: FilterRequest): List<Person> {
-
         val (ageCutoff, except, heightCutoff, persons) = filterRequest
+
         val ageStandard = ageCutoff ?: 0
         val heightStandard = heightCutoff ?: 0
         val exceptStandard = except ?: emptyList()
@@ -39,7 +38,9 @@ class PersonListService {
         logger.info("ageStandard: $ageStandard, heightStandard: $heightStandard")
 
         return persons
-                .filter { it.age >= ageStandard && it.height >= heightStandard }
-                .filter { it.id !in exceptStandard }
+            .filter { it.age >= ageStandard && it.height >= heightStandard }
+            .filter { it.id !in exceptStandard }
     }
+
+
 }
