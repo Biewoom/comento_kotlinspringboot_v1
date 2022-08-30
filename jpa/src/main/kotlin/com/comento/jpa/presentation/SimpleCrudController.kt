@@ -1,7 +1,9 @@
 package com.comento.jpa.presentation
 
+import com.comento.jpa.domain.BlindDateNotFoundException
 import com.comento.jpa.domain.CompanyNotFoundException
 import com.comento.jpa.domain.CountryNotFoundException
+import com.comento.jpa.domain.PersonNotFoundException
 import com.comento.jpa.service.CompanyService
 import com.comento.jpa.service.CountryService
 import com.comento.jpa.service.PersonService
@@ -60,5 +62,24 @@ class SimpleCrudController(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
         }
     }
+    @Operation(summary = "Get BlindDate Couple List with it's age Difference")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Found BlindDate tuple",
+            content = [Content(mediaType = "application/json", array = ArraySchema(schema = Schema(implementation = BlindDateDto::class)))]),
+        ApiResponse(responseCode = "404", description = "Not Found", content = [Content(mediaType = "application/json", schema = Schema(implementation = String::class, example = "`ageDiff` Cannot be Found" ))])
+    ])
+    @GetMapping("/persons/blind-date/{ageDiff}")
+    fun getBlindDateCoupleList(@PathVariable("ageDiff") ageDiff: Int): ResponseEntity<*> {
+        return try {
+            ResponseEntity.ok().body(personService.findBlindDateCoupleList(ageDiff))
+        } catch (e: Exception){
+            when (e){
+                is PersonNotFoundException -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.message)
+                is BlindDateNotFoundException -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.message)
+            }
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
+        }
+    }
+
 
 }
