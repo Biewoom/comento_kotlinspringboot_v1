@@ -6,8 +6,4 @@ interface CompanyRepository: CrudRepository<Company, Long>{
 
     fun findCompaniesByCountry(country: String): List<Company>
 
-    fun findCompanyByName()
-
-    fun findCompanyByFoundingDate(foundingDate: String): Company?
-
 }
