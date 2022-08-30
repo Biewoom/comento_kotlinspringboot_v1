@@ -26,3 +26,8 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+
+springdoc:
+  version: '0.0'
+  swagger-ui:
+    path: /openapi
