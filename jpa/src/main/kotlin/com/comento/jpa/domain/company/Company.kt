@@ -1,5 +1,6 @@
 package com.comento.jpa.domain.company
 
+import com.comento.jpa.domain.common.vo.YMD
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
