@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -62,6 +64,23 @@ class SimpleCrudController(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
         }
     }
+
+    @Operation(summary = "Post or Update")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Success Results",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = ResultDto::class))]),
+        ApiResponse(responseCode = "500", description = "UnKnown Error", content = [Content()])
+    ])
+    @PutMapping("/persons")
+    fun postPersons(@RequestBody personRequests: List<PersonDto>): ResponseEntity<*> {
+        return try {
+            ResponseEntity.ok().body(personService.registerOrSavePersons(personRequests))
+        } catch (e: Exception){
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
+        }
+    }
+
+
     @Operation(summary = "Get BlindDate Couple List with it's age Difference")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "Found BlindDate tuple",
