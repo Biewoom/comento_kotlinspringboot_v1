@@ -21,6 +21,9 @@ data class Person(
     @Column(name = "person_id", precision = 255)
     private var _id: Int? = null
 
+    val id: Int
+        get() = _id ?: 0
+
     @Column(name = "age", precision = 10)
     var age: Int? = null
 
@@ -40,6 +43,9 @@ data class Person(
         return "Person(name='$name', gender=$gender, country='$country', age=$age)"
     }
 
+    fun updateId(_id: Number){
+        this._id = _id.toInt()
+    }
 
 }
 
