@@ -9,7 +9,8 @@ enum class Gender(@JsonValue val genderStr: String) {
     FEMALE("Female");
 
     companion object {
-        @JvmStatic @JsonCreator
-        operator fun invoke(genderStr: String) = values().find { it.genderStr == genderStr } ?: UNKNOWN
+        @JsonCreator
+        operator fun invoke(genderStr: String?) =  values().find { it.genderStr === genderStr } ?: UNKNOWN
+
     }
 }
