@@ -1,5 +1,11 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.domain.Divide
+import com.comento.dbless.domain.Expr
+import com.comento.dbless.domain.Minus
+import com.comento.dbless.domain.Pow
+import com.comento.dbless.domain.Sum
+import com.comento.dbless.domain.Time
 import com.comento.dbless.getDecimalPoint
 import com.comento.dbless.toNumber
 import com.comento.dbless.toRound
@@ -9,6 +15,11 @@ import java.lang.Integer.max
 import kotlin.math.pow
 import kotlin.random.Random
 
+private inline fun <T> List<T>.lastIndexOrNull(predicate: (T) -> Boolean): Int? = run {
+    val res = this.indexOfLast(predicate)
+    if (res == -1) null
+    else res
+}
 @Service
 class CalculatorService {
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -27,55 +38,67 @@ class CalculatorService {
         }
     }
 
-    fun calculate(expression: String, round: Int): Double {
-        return parseExpression(expression).toRound(round)
+    fun calculate(expr: String, roundNum: Int): Double {
+        val ll = makeStringList(expr)
+        val expr = parseExpression(ll)
+        return expr.evalFun().toRound(roundNum)
     }
 
-    private fun parseExpression(expression: String): Double {
-        val filteredExpression = expression.filter { !it.isWhitespace() }.toList()
-        val calculatingBlocks = mutableListOf<String>()
-        var index = 0
-        while(index < filteredExpression.size){
-            if(filteredExpression.get(index) in listOf('+', '-', '*', '/', '^')){
-                calculatingBlocks.add(filteredExpression[index].toString())
-                index += 1
-            }else{
-                val numberBlock = filteredExpression.subList(fromIndex = index, toIndex = filteredExpression.size).takeWhile { it.isDigit() }.joinToString("")
-                calculatingBlocks.add(numberBlock)
-                index += numberBlock.length
+    private fun makeStringList(str: String): List<String> {
+        if (str.isEmpty()) return emptyList()
+        val res = mutableListOf<String>()
+
+        val strWithoutSpace = str.filter { !it.isWhitespace() }
+
+        var num = ""
+        strWithoutSpace.forEach {
+            if (it in listOf('+', '-', '*', '/', '^')) {
+                res.add(num)
+                res.add(it.toString())
+                num = ""
+            } else {
+                if (!it.isDigit()) throw IllegalArgumentException("`$it` should be digit ")
+                num += it
             }
         }
-        logger.info("calculatingBlocks: $calculatingBlocks")
-        return calculateExpression(calculatingBlocks.toList())
+        res.add(num)
+        return res.toList()
     }
 
-    private fun calculateExpression(expressionChars: List<String>):Double{
-        expressionChars.firstOrNull { it in listOf("+", "-") }?.let {
-            val index = expressionChars.indexOf(it)
-            if(it=="+"){
-                return calculateExpression(expressionChars.subList(0, index)) + calculateExpression(expressionChars.subList(index+1, expressionChars.size))
-            }else{
-                return calculateExpression(expressionChars.subList(0, index)) - calculateExpression(expressionChars.subList(index+1, expressionChars.size))
+    private fun parseExpression(ll: List<String>): Expr {
+        if (ll.size == 1) return Expr.Num(ll[0].toDouble())
+
+        ll.lastIndexOrNull { it == "+" || it == "-" }?.let {
+            when (ll[it]) {
+                "+" -> return Sum(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+                else -> return Minus(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
             }
         }
-
-        expressionChars.firstOrNull { it in listOf("*", "/", "^") }?.let {
-            val index = expressionChars.indexOf(it)
-            if(it=="*"){
-                return calculateExpression(expressionChars.subList(0, index)) * calculateExpression(expressionChars.subList(index+1, expressionChars.size))
-            }else if(it=="/"){
-                return calculateExpression(expressionChars.subList(0, index)) / calculateExpression(expressionChars.subList(index+1, expressionChars.size))
-            }else {
-                return calculateExpression(expressionChars.subList(0, index)).pow(calculateExpression(expressionChars.subList(index+1, expressionChars.size)))
+        ll.lastIndexOrNull { it == "*" || it == "/" }?.let {
+            when (ll[it]) {
+                "*" -> return Time(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+                else -> return Divide(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
             }
         }
-
-        if(expressionChars.size==1){
-            return expressionChars.first().toDouble()
+        ll.lastIndexOrNull { it == "^" }?.let {
+            return Pow(
+                parseExpression(ll.subList(0, it)),
+                parseExpression(ll.subList(it + 1, ll.size))
+            )
         }
-
-        throw RuntimeException()
-
+        throw IllegalArgumentException("$ll cannot reach this line")
     }
 
 }
