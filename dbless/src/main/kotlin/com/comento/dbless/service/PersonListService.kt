@@ -1,5 +1,6 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.logger
 import com.comento.dbless.presentation.dto.Cutoff
 import com.comento.dbless.presentation.dto.Person
 import com.comento.dbless.presentation.dto.Persons
@@ -28,7 +29,9 @@ class PersonListService {
 
     fun filterPersons(@RequestBody cutoff: Cutoff): List<Person>{
         val (ageCutoff, heightCutoff, except, people) = cutoff
-
+        logger.info{
+            "cutoff: $cutoff"
+        }
         return people.filter{
             it.age >= (ageCutoff ?: 0) && it.height >= (heightCutoff ?: 0)
         }.filter {

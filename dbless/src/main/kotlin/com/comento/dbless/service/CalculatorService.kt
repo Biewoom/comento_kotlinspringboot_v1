@@ -7,11 +7,21 @@ import com.comento.dbless.domain.Pow
 import com.comento.dbless.domain.Sum
 import com.comento.dbless.domain.Time
 import com.comento.dbless.getDecimalPoint
+import com.comento.dbless.logger
 import com.comento.dbless.toNumber
 import com.comento.dbless.toRound
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.Schema
+import io.swagger.v3.oas.annotations.responses.ApiResponse
+import io.swagger.v3.oas.annotations.responses.ApiResponses
+import mu.KotlinLogging
+import org.apache.logging.log4j.message.Message
 import org.slf4j.LoggerFactory
+import org.slf4j.MDC
 import org.springframework.stereotype.Service
 import java.lang.Integer.max
+import java.util.*
 import kotlin.math.pow
 import kotlin.random.Random
 
@@ -22,8 +32,14 @@ private inline fun <T> List<T>.lastIndexOrNull(predicate: (T) -> Boolean): Int? 
 }
 @Service
 class CalculatorService {
-    private val logger = LoggerFactory.getLogger(javaClass)
 
+@Operation(summary = "Get a message by it's id") // 1. Operation
+@ApiResponses(value = [
+    ApiResponse(responseCode = "200", description = "Found the Message",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]), // 2. ApiResponse
+    ApiResponse(responseCode = "400", description = "Invalid Id supplied", content = [Content()]),
+    ApiResponse(responseCode = "404", description = "Message Not Found", content = [Content()])
+])
     fun generateRandomNumber(start: String, end: String): Number {
         val startNum = start.toNumber()
         val endNum = end.toNumber()
@@ -40,6 +56,12 @@ class CalculatorService {
 
     fun calculate(expr: String, roundNum: Int): Double {
         val ll = makeStringList(expr)
+        MDC.clear()
+        MDC.put("requestId", UUID.randomUUID().toString())
+        logger.info{
+            "requestId: ${UUID.randomUUID().toString()}"
+//            "expression: $ll"
+        }
         val expr = parseExpression(ll)
         return expr.evalFun().toRound(roundNum)
     }
