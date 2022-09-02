@@ -33,13 +33,6 @@ private inline fun <T> List<T>.lastIndexOrNull(predicate: (T) -> Boolean): Int? 
 @Service
 class CalculatorService {
 
-@Operation(summary = "Get a message by it's id") // 1. Operation
-@ApiResponses(value = [
-    ApiResponse(responseCode = "200", description = "Found the Message",
-        content = [Content(mediaType = "application/json", schema = Schema(implementation = Message::class))]), // 2. ApiResponse
-    ApiResponse(responseCode = "400", description = "Invalid Id supplied", content = [Content()]),
-    ApiResponse(responseCode = "404", description = "Message Not Found", content = [Content()])
-])
     fun generateRandomNumber(start: String, end: String): Number {
         val startNum = start.toNumber()
         val endNum = end.toNumber()
