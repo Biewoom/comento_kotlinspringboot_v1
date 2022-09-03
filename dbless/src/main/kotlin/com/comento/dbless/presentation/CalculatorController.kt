@@ -1,5 +1,6 @@
 package com.comento.dbless.presentation
 
+import com.comento.dbless.presentation.dto.Calculator
 import com.comento.dbless.service.CalculatorService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -7,20 +8,14 @@ import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/calculator")
 class CalculatorController(val calculatorService: CalculatorService) {
 
-    // Rest Controller + Mapping Annotation 으로 API 구성
-
-    /**
-     * 하나의 메시지를 출력
-     */
     @Operation(summary = "Generate Random Number", description = "해당 범위 안에 있는 Numbers 중 랜덤으로 생성")
     @ApiResponses(
         value = [
@@ -49,4 +44,17 @@ class CalculatorController(val calculatorService: CalculatorService) {
     fun generateRandomNumber(@PathVariable("range") range: String): Number {
         return calculatorService.generateRandomNumber(range)
     }
+
+    @PostMapping("/calculate")
+    fun calculate(@RequestBody dto: Calculator): ResponseEntity<*> = runCatching {
+        val (expr, roundNum) = dto
+        calculatorService.calculate(expr, roundNum)
+    }.mapCatching { result ->
+        ResponseEntity.ok(result)
+    }.recoverCatching { e ->
+        when (e){
+            is IllegalArgumentException -> ResponseEntity.status(HttpStatus.BAD_REQUEST).body("cause: ${e.message}")
+            else -> throw e
+        }
+    }.getOrNull() ?: ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("[Unknown Error] If Under Emergency, Please contact by emil likemin014@gmail.com")
 }

@@ -1,8 +1,8 @@
 package com.comento.dbless.service
 
-import com.comento.dbless.presentation.dto.FilterRequest
-import com.comento.dbless.presentation.dto.Person
-import com.comento.dbless.presentation.dto.Persons
+import com.comento.dbless.service.presentation.dto.FilterRequest
+import com.comento.dbless.service.presentation.dto.Person
+import com.comento.dbless.service.presentation.dto.Persons
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 

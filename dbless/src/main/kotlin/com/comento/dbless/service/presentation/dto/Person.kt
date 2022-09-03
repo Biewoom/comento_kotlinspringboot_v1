@@ -1,4 +1,4 @@
-package com.comento.dbless.presentation.dto
+package com.comento.dbless.service.presentation.dto
 
 data class Persons(
     // Persons라는 data class를 통해 기존 JAVA DTO를 수행
