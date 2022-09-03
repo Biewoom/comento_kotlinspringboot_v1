@@ -1,0 +1,50 @@
+### case 1
+GET http://localhost:8080/api/v1/calculator/generate/5~1000
+
+> {%
+  client.test("case_1: success", function() {
+    client.assert(response.body > 5 && response.body < 1000, "Response is not betwwen 5~1000")
+    client.assert(response.status === 200, "Response status is not 200");
+  });
+%}
+
+### case 2
+GET http://localhost:8080/api/v1/calculator/generate/0~100
+
+> {%
+  client.test("case_2: success", function() {
+    client.assert(response.body > 0 && response.body < 100, "Response is not betwwen 1~100")
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### case 3
+GET http://localhost:8080/api/v1/calculator/generate/1.5~100.1555
+
+> {%
+  client.test("case_2: success", function() {
+    client.assert(response.body > 0 && response.body < 100, "Response is not betwwen 1~100")
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### case 4
+GET http://localhost:8080/api/v1/calculator/generate/1.5~5.5
+
+> {%
+  client.test("case_3: success", function() {
+    client.assert(response.body >= 1.5 && response.body <= 5.5, "Response is not betwwen 1.5~5.5")
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### case 4
+GET http://localhost:8080/api/v1/calculator/generate/100.5111~1032.12
+
+
+> {%
+  client.test("case_4: success", function() {
+    client.assert(response.body >= 100.5111 && response.body <= 1032.12, "Response is not betwwen 1.5~5.5")
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}
