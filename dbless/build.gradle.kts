@@ -12,4 +12,21 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // open API
+    implementation("org.springdoc:springdoc-openapi-data-rest:1.5.12")
+    implementation("org.springdoc:springdoc-openapi-ui:1.5.12")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.5.12")
+
+    // KLogger
+    implementation("io.github.microutils:kotlin-logging:2.1.21")
+
+    // log4j2 의존성 추가
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+    modules {
+        module("org.springframework.boot:spring-boot-starter-logging") {
+            replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
+        }
+    } // 기존 모듈에서 logback -> log4j2로 교체하는 scirpt 추가
 }
