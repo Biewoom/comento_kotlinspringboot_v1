@@ -2,6 +2,8 @@ package com.comento.dbless.presentation
 
 import com.comento.dbless.presentation.dto.Message
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.media.ArraySchema
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -32,6 +34,12 @@ class MessageController {
     /**
      * 메시지 목록 출력
      */
+    // 참고 ArraySchema 사용가능
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Found All messages",
+            content = [Content(mediaType = "application/json", array = ArraySchema(schema = Schema(implementation = Message::class)))]
+        )
+    ])
     @GetMapping("/messages/all")
     fun getAllMessages() = messages
 
@@ -50,7 +58,10 @@ class MessageController {
         ]
     )
     @GetMapping("/messages/{id}")
-    fun getOneMessage(@PathVariable("id") id: String) = messages.find { it.id == id }
+    fun getOneMessage(
+        @Parameter(required = true, description = "Id of Message to be searched", example = "id1")  // 3. Parameter
+        @PathVariable("id") id: String
+    ) = messages.find { it.id == id }
 
     /**
      * 메시지를 저장

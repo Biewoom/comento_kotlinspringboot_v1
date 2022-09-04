@@ -9,10 +9,10 @@ import com.comento.dbless.domain.Sum
 import com.comento.dbless.domain.Time
 import com.comento.dbless.toNumber
 import com.comento.dbless.toRound
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.lang.Math.max
 import kotlin.random.Random
+import mu.KotlinLogging
 
 private fun String.getDecimalPoint() = this.split(".").getOrNull(1)?.length ?: 0
 private inline fun <T> List<T>.firstIndexOrNull(predicate: (T) -> Boolean): Int? = run {
@@ -24,7 +24,7 @@ private inline fun <T> List<T>.firstIndexOrNull(predicate: (T) -> Boolean): Int?
 @Service
 class CalculatorService {
 
-    private val logger = LoggerFactory.getLogger(javaClass)
+    private val logger = KotlinLogging.logger(javaClass.name) // Logger
 
     fun generateRandomNumber(range: String): Number {
 
@@ -63,6 +63,7 @@ class CalculatorService {
     fun calculate(expr: String, roundNum: Int): Double {
         val ll = makeStringList(expr)
         val expr = parseExpression(ll)
+        logger.info(ll.toString() + ", " + expr.toString())
         return expr.evalFun().toRound(roundNum)
     }
 
