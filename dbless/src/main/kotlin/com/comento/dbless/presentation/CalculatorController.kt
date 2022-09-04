@@ -57,12 +57,19 @@ class CalculatorController(
         ApiResponse(responseCode = "500", description = "Unknown Exception", content = [Content()])
     ])
     @PostMapping("/calculate")
-    fun calculateNumber(@RequestBody request: CalculatorRequest): Double {
+    fun calculateNumber(@RequestBody request: CalculatorRequest): ResponseEntity<*> {
         val (expression, round) = request
-        MDC.clear()
-        MDC.put("requestId", UUID.randomUUID().toString())
-        logger.info { "expression: $expression, round: $round"}
-        return calculatorService.calculate(expression, round)
+
+        return try {
+            MDC.clear()
+            MDC.put("requestId", UUID.randomUUID().toString())
+            logger.info { "expression: $expression, round: $round"}
+            ResponseEntity.status(HttpStatus.OK).body(calculatorService.calculate(expression, round))
+        } catch(e: IllegalArgumentException){
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("cause: ${e.message}")
+        } catch(e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("[Unknown Error] If Under Emergency, Please contact by emil likemin014@gmail.com")
+        }
     }
 
 }

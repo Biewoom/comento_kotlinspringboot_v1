@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.apache.logging.log4j.message.Message
 import org.slf4j.MDC
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -29,11 +31,17 @@ class PersonController(private val personListService: PersonListService) {
         ApiResponse(responseCode = "500", description = "Unknown Exception", content = [Content()])
     ])
     @PostMapping("/sort")
-    fun sortPersons(@RequestBody people: Persons): List<Person>{
-        MDC.clear()
-        MDC.put("requestId", UUID.randomUUID().toString())
-        logger.info { "people: $people"}
-        return personListService.sortPersons(people)
+    fun sortPersons(@RequestBody people: Persons): ResponseEntity<*>{
+        return try {
+            MDC.clear()
+            MDC.put("requestId", UUID.randomUUID().toString())
+            logger.info { "people: $people"}
+            ResponseEntity.status(HttpStatus.OK).body(personListService.sortPersons(people))
+        } catch(e: IllegalArgumentException){
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("cause: ${e.message}")
+        } catch(e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("[Unknown Error] If Under Emergency, Please contact by emil likemin014@gmail.com")
+        }
     }
     @Operation(summary = "Filter people by cutoff") // 1. Operation
     @ApiResponses(value = [
@@ -43,10 +51,16 @@ class PersonController(private val personListService: PersonListService) {
         ApiResponse(responseCode = "500", description = "Unknown Exception", content = [Content()])
     ])
     @PostMapping("/filter")
-    fun filterPersons(@RequestBody cutoff: Cutoff): List<Person> {
-        MDC.clear()
-        MDC.put("requestId", UUID.randomUUID().toString())
-        logger.info { "people: $cutoff"}
-        return personListService.filterPersons(cutoff)
+    fun filterPersons(@RequestBody cutoff: Cutoff):  ResponseEntity<*> {
+        return try {
+            MDC.clear()
+            MDC.put("requestId", UUID.randomUUID().toString())
+            logger.info { "people: $cutoff"}
+            ResponseEntity.status(HttpStatus.OK).body(personListService.filterPersons(cutoff))
+        } catch(e: IllegalArgumentException){
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("cause: ${e.message}")
+        } catch(e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("[Unknown Error] If Under Emergency, Please contact by emil likemin014@gmail.com")
+        }
     }
 }

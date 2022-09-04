@@ -1,3 +1,217 @@
+GET http://localhost:8080/api/v1/calculator/generate/123
+
+<> 2022-09-04T094536.500.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"],
+}
+
+<> 2022-09-04T094536-2.400.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ]
+}
+
+<> 2022-09-04T094536-1.400.json
+
+###
+
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "yo": "yoyoyo"
+}
+
+<> 2022-09-04T094536.400.json
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/100.5111~1032.12
+
+<> f-8.txt
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/1.5~5.5
+
+<> f-7.txt
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/1.5~100.1555
+
+<> f-6.txt
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/0~100
+
+<> 2022-09-04T094535-1.200.json
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/5~1000
+
+<> 2022-09-04T094535.200.json
+
+###
+
+GET http://localhost:8080/api/v1/calculator/generate/123
+
+<> 2022-09-04T094515.500.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"],
+}
+
+<> 2022-09-04T094303.400.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ]
+}
+
+<> 2022-09-04T094210.400.json
+
+###
+
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "yo": "yoyoyo"
+}
+
+<> 2022-09-04T094029.400.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ],
+  "sortBy": "name",
+  "sortOrder": "asc"
+}
+
+<> 2022-09-04T093550.200.json
+
+###
+
+POST http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ],
+  "sortBy": "name",
+  "sortOrder": "asc"
+}
+
+<> 2022-09-04T093522.200.json
+
+###
+
 POST http://localhost:8080/api/v1/persons/filter
 Content-Type: application/json
 
@@ -449,269 +663,6 @@ Content-Type: application/json
 }
 
 <> 2022-08-28T100710.200.json
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/1~22
-
-<> 2022-08-27T235949.200.json
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/1~22
-
-<> 2022-08-27T235836.404.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/filter
-Content-Type: application/json
-
-{
-  "ageCutoff": 30,
-  "heightCutoff": 170,
-  "except": ["ID1323"],
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ]
-}
-
-<> 2022-08-27T234049.200.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/filter
-Content-Type: application/json
-
-{
-  "ageCutoff": 30,
-  "heightCutoff": 170,
-  "except": ["ID1323"],
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ]
-}
-
-<> 2022-08-27T233951.404.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/filter
-Content-Type: application/json
-
-{
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ],
-  "ageCutoff": 30,
-  "heightCutoff": 170,
-  "except": ["ID1323"]
-}
-
-<> 2022-08-27T233841.404.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/sort
-Content-Type: application/json
-
-{
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID1324",
-      "name": "Alice",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1323",
-      "name": "Malo",
-      "age": 34,
-      "height": 171
-    }
-  ],
-  "sortBy": "name",
-  "sortOrder": "asc"
-}
-
-<> 2022-08-27T232839.200.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/sort
-Content-Type: application/json
-
-{
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ]
-}
-
-<> 2022-08-27T232640.400.json
-
-###
-
-POST http://localhost:8080
-Content-Type: application/json
-
-{
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ]
-}
-
-<> 2022-08-27T232614.404.json
 
 ###
 

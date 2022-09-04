@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-04T00:45:36.822+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/api/v1/calculator/generate/123"
+}

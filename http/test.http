@@ -48,3 +48,77 @@ GET http://localhost:8080/api/v1/calculator/generate/100.5111~1032.12
     client.assert(response.status === 200, "Response status is not 200");
 });
 %}
+
+
+### case 5
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "yo": "yoyoyo"
+}
+
+> {%
+  client.test("case_5: fail", function() {
+    client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+### case 6
+POST http://localhost:8080/api/v1/persons/sort
+Content-Type: application/json
+
+{
+  "persons": [
+    {
+      "id": "ID1001",
+      "name": "Tom",
+      "age": 10,
+      "height": 175
+    },
+    {
+      "id": "ID1324",
+      "name": "Alice",
+      "age": 20,
+      "height": 170
+    },
+    {
+      "id": "ID1323",
+      "name": "Malo",
+      "age": 34,
+      "height": 171
+    }
+  ]
+}
+
+> {%
+  client.test("case_6: fail", function() {
+    client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+### case 7
+POST http://localhost:8080/api/v1/persons/filter
+Content-Type: application/json
+
+{
+  "ageCutoff": 30,
+  "heightCutoff": 170,
+  "except": ["ID1323"],
+}
+
+> {%
+  client.test("case_7: fail", function() {
+    client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+### case 8
+GET http://localhost:8080/api/v1/calculator/generate/123
+
+
+> {%
+  client.test("case_8: fail", function() {
+    client.assert(response.status === 500, "Response status is not 500");
+});
+%}
