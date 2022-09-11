@@ -1,0 +1,4 @@
+springdoc:
+  version: '0.1'
+  swagger-ui:
+    path: /openapi
