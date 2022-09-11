@@ -176,72 +176,53 @@
     <table id="165" parent="163" name="COMPANY"/>
     <table id="166" parent="163" name="COUNTRY"/>
     <table id="167" parent="163" name="PERSON"/>
-    <column id="168" parent="165" name="COMPANY_ID">
-      <ColumnKind>generated-stored</ColumnKind>
-      <DataType>NUMERIC(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <SequenceInline>1</SequenceInline>
-      <SequenceSequenceIdentity>1(9)..9223372036854775807</SequenceSequenceIdentity>
-    </column>
-    <column id="169" parent="165" name="FOUNDING_DATE">
-      <DataType>CHARACTER VARYING(100)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="170" parent="165" name="NAME">
-      <DataType>CHARACTER VARYING(100)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="171" parent="165" name="COUNTRY">
-      <DataType>CHARACTER VARYING(100)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_6">
-      <ColNames>COMPANY_ID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <index id="173" parent="165" name="CONSTRAINT_INDEX_6">
-      <ColNames>NAME</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <key id="174" parent="165" name="CONSTRAINT_63">
-      <ColNames>COMPANY_ID</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <key id="175" parent="165" name="CONSTRAINT_6">
-      <ColNames>NAME</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-    </key>
-    <column id="176" parent="166" name="ZIP_CODE">
+    <column id="168" parent="165" name="ZIP_CODE">
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="177" parent="166" name="CAPITAL_CITY">
+    <column id="169" parent="165" name="CAPITAL_CITY">
       <DataType>CHARACTER VARYING(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="178" parent="166" name="NAME">
+    <column id="170" parent="165" name="NAME">
       <DataType>CHARACTER VARYING(255)|0s</DataType>
       <Position>3</Position>
     </column>
-    <index id="179" parent="166" name="PRIMARY_KEY_63">
+    <index id="171" parent="165" name="PRIMARY_KEY_6">
       <ColNames>ZIP_CODE</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="180" parent="166" name="CONSTRAINT_63E">
+    <key id="172" parent="165" name="CONSTRAINT_6">
       <ColNames>ZIP_CODE</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="181" parent="167" name="PERSON_ID">
+    <column id="173" parent="166" name="ZIP_CODE">
+      <DataType>BIGINT|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="174" parent="166" name="CAPITAL_CITY">
+      <DataType>CHARACTER VARYING(255)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="175" parent="166" name="NAME">
+      <DataType>CHARACTER VARYING(255)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <index id="176" parent="166" name="PRIMARY_KEY_63">
+      <ColNames>ZIP_CODE</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="177" parent="166" name="CONSTRAINT_63">
+      <ColNames>ZIP_CODE</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="178" parent="167" name="PERSON_ID">
       <ColumnKind>generated-stored</ColumnKind>
       <DataType>NUMERIC(255)|0s</DataType>
       <NotNull>1</NotNull>
@@ -249,57 +230,57 @@
       <SequenceInline>1</SequenceInline>
       <SequenceSequenceIdentity>1(10)..9223372036854775807</SequenceSequenceIdentity>
     </column>
-    <column id="182" parent="167" name="NAME">
+    <column id="179" parent="167" name="NAME">
       <DataType>CHARACTER VARYING(30)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="183" parent="167" name="GENDER">
+    <column id="180" parent="167" name="GENDER">
       <DataType>TINYINT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="184" parent="167" name="AGE">
+    <column id="181" parent="167" name="AGE">
       <DataType>NUMERIC(10)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="185" parent="167" name="HEIGHT">
+    <column id="182" parent="167" name="HEIGHT">
       <DataType>NUMERIC(10)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="186" parent="167" name="WEIGHT">
+    <column id="183" parent="167" name="WEIGHT">
       <DataType>NUMERIC(10)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="187" parent="167" name="IS_MARRIED">
+    <column id="184" parent="167" name="IS_MARRIED">
       <DataType>BOOLEAN|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="188" parent="167" name="COMPANY">
+    <column id="185" parent="167" name="COMPANY">
       <DataType>CHARACTER VARYING(100)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="189" parent="167" name="COUNTRY">
+    <column id="186" parent="167" name="COUNTRY">
       <DataType>CHARACTER VARYING(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <index id="190" parent="167" name="CONSTRAINT_INDEX_8">
+    <index id="187" parent="167" name="CONSTRAINT_INDEX_8">
       <ColNames>PERSON_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <index id="191" parent="167" name="PRIMARY_KEY_8">
+    <index id="188" parent="167" name="PRIMARY_KEY_8">
       <ColNames>PERSON_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="192" parent="167" name="CONSTRAINT_8C">
+    <key id="189" parent="167" name="CONSTRAINT_8C">
       <ColNames>PERSON_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="193" parent="167" name="CONSTRAINT_8">
+    <key id="190" parent="167" name="CONSTRAINT_8">
       <ColNames>PERSON_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
     </key>

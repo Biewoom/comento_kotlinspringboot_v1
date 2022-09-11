@@ -13,4 +13,5 @@ class CountryService(private val countryRepository: CountryRepository) {
         logger.info("country $country")
         return country.capital
     }
+
 }

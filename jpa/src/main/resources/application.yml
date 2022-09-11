@@ -12,6 +12,13 @@ spring:
       settings:
         web-allow-others: true
 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: h2
+
   sql:
     init:
       schema-locations:
