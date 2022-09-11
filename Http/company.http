@@ -1,0 +1,9 @@
+###
+GET http://localhost:8080/api/v1/simple-crud/companies/country/usA
+
+> {%
+client.test("case_1: success",function (){
+    // TODO jsonStr to jsonArray 비교
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}

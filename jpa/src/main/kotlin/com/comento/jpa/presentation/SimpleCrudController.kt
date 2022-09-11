@@ -1,5 +1,7 @@
 package com.comento.jpa.presentation
 
+import com.comento.jpa.presentation.dto.CompanyDto
+import com.comento.jpa.service.CompanyService
 import com.comento.jpa.service.CountryService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/simple-crud")
 class SimpleCrudController(
-    private val countryService: CountryService
+    private val countryService: CountryService,
+    private val companyService: CompanyService
 ) {
 
     @GetMapping("/countries/{countryName}/capital-city")
-    fun searchCapitalCity(@PathVariable("countryName") countryName: String): ResponseEntity<String> {
+    fun searchCapitalCity(@PathVariable("countryName") countryName: String): ResponseEntity<*> {
         return try {
             ResponseEntity.ok().body(countryService.findCapitalCityByName(countryName))
         } catch (e: IllegalArgumentException) {
@@ -24,4 +27,17 @@ class SimpleCrudController(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
         }
     }
+
+    @GetMapping("/companies/country/{countryName}")
+    fun searchCompanyListByCountryName(@PathVariable("countryName") countryName: String): ResponseEntity<*> {
+        return try {
+            ResponseEntity.ok().body(companyService.findCompanyDtoListByCountry(countryName))
+        } catch (e: IllegalArgumentException) {
+            ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.message)
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
+        }
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.comento.jpa.domain
 
+import com.comento.jpa.presentation.dto.CompanyDto
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -25,6 +26,8 @@ data class Company(
 
     val id: Long
         get() = _id ?: 0
+
+    public fun toDto(): CompanyDto = CompanyDto(foundingDate, name, country)
 }
 
 @JvmInline
