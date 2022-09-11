@@ -1,0 +1,9 @@
+###
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+> {%
+client.test("case_1: success",function (){
+    client.assert(response.body === "Tokyo", "Not Tokyo")
+    client.assert(response.status === 200, "Response status is not 200");
+});
+%}

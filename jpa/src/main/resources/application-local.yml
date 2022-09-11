@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password: 1234
+      driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+  sql:
+    init:
+      schema-locations:
+        - classpath:sql/ddl/* # resource의 sql/ddl 하위 파일 전부를 설정
+      continue-on-error: false # Init 과정에서 SQL 오류가 있으면 종료
+      mode: always # 매번 실행 때마다 실행한다는 옵션
+      platform: h2
+      data-locations:
+        - classpath:sql/dml/* # resource의 sql/ddl 하위 파일 전부를 설정
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect # database Dialect 지정
+    show-sql: true # hibernate query 날릴 때 SQL 로그가 남게 설정
+    hibernate:
+      ddl-auto: update # DDL의 경우, Entity가 있을 경우 update
+    database: h2 # 사용할 database h2로 명시
