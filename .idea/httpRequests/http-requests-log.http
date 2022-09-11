@@ -1,3 +1,159 @@
+GET http://localhost:8080/api/v1/simple-crud/countries/JAPAN/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T185601.500.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/JAPAN/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T185453.200.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/JAPAN/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T185440.200.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T185136.500.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T185123.500.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T184612.500.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T184506.500.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T183843.500.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T183807.500.json
+
+###
+
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
+  "round": 2
+}
+
+<> 2022-09-11T183801.404.json
+
+###
+
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
+  "round": 2
+}
+
+<> 2022-09-11T183757.404.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T183755.500.json
+
+###
+
+POST http://localhost:8080/api/v1/calculator/calculate
+Content-Type: application/json
+
+{
+  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
+  "round": 2
+}
+
+<> 2022-09-11T183753.404.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T183232.500.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/countries/japan/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/Korea/capital-city
+
+GET http://localhost:8080/api/v1/simple-crud/countries/france/capital-city
+
+<> 2022-09-11T183057.500.json
+
+###
+
 GET http://localhost:8080/api/v1/calculator/generate/123
 
 <> 2022-09-04T094536.500.json
@@ -483,186 +639,6 @@ Content-Type: application/json
 }
 
 <> 2022-09-02T210215.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T210117.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T205706.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204735.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204732.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204722.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204715.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204238.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204223.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204045.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "940 + 519 ^ 2 - 579 * 108 ^ 2 / 749 + 1000 + 10",
-  "round": 2
-}
-
-<> 2022-09-02T204041.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "2 + 1 * 2 / 100 ^ 2",
-  "round": 5
-}
-
-<> 2022-09-02T204026.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "1 + 5 * 10 - 10 / 10 ^ 5",
-  "round": 4
-}
-
-<> 2022-09-02T203857.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "1 + 5 * 10 - 10 / 10 ^ 5",
-  "round": 4
-}
-
-<> 2022-09-02T203817.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "1 + 5 * 10 - 10 / 10 ^ 5",
-  "round": 4
-}
-
-<> 2022-08-28T101017.200.json
-
-###
-
-POST http://localhost:8080/api/v1/calculator/calculate
-Content-Type: application/json
-
-{
-  "expression": "1 + 5 * 10 - 10 / 10 ^ 5",
-  "round": 4
-}
-
-<> 2022-08-28T100710.200.json
 
 ###
 

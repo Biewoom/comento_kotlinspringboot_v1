@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-11T09:38:43.236+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/api/v1/simple-crud/countries/japan/capital-city"
+}
