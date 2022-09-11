@@ -11,3 +11,13 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+
+  sql:
+    init:
+      schema-locations:
+        - classpath:sql/ddl/* # resource의 sql/ddl 하위 파일 전부를 설정
+      continue-on-error: false # Init 과정에서 SQL 오류가 있으면 종료
+      mode: always # 매번 실행 때마다 실행한다는 옵션
+      platform: h2
+      data-locations:
+        - classpath:sql/dml/* # resource의 sql/ddl 하위 파일 전부를 설정
