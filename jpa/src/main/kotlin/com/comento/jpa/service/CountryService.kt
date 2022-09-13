@@ -11,5 +11,4 @@ class CountryService(
         val country = countryRepository.findByName(name.uppercase()) ?: throw IllegalArgumentException("'$name' is not value")
         return country.capitalCity;
     }
-
 }
