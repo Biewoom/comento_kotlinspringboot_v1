@@ -33,15 +33,15 @@ data class BlindDateDto (
             age = person.age ?: 0,
             height = person.height,
             weight = person.weight,
-            company = person.company,
-            country = person.country
+            company = person.company?.name,
+            country = person.country?.name
         )
     }
 }
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy::class)
 @Schema(title = "Person DTO")
 data class PersonDto (
-    @Schema(title = "Person Id", example = "10") val personId: Int?,
+    @Schema(title = "Person Id", example = "10") val personId: Long?,
     @Schema(title = "나이", example = "45") val age: Int?,
     @Schema(title = "키", example = "175") val height: Int?,
     @Schema(title = "몸무게", example = "73") val weight: Int?,
@@ -55,5 +55,5 @@ data class PersonDto (
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy::class)
 data class ResultDto(
     @Schema(title = "결과 타입들", example = "[1,0,1]" ) val resultTypes: List<Int>,
-    @Schema(title = "Person Id들", example = "[10, 1, 49, 3]")  val personIds: List<Int>
+    @Schema(title = "Person Id들", example = "[10, 1, 49, 3]")  val personIds: List<Long>
 )

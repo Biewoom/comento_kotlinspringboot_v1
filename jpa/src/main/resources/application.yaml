@@ -2,12 +2,18 @@ spring:
   sql:
     init:
       schema-locations:
-        - classpath:sql/ddl/*
+        - classpath:sql/ddl/first/*
+        - classpath:sql/ddl/second/*
+        - classpath:sql/ddl/third/*
+        - classpath:sql/ddl/forth/*
       continue-on-error: false
       mode: always
       platform: h2
       data-locations:
-        - classpath:sql/dml/*
+        - classpath:sql/dml/first/*
+        - classpath:sql/dml/second/*
+        - classpath:sql/dml/third/*
+        - classpath:sql/dml/forth/*
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true

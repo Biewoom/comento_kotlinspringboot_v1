@@ -3,6 +3,7 @@ package com.comento.jpa.service
 import com.comento.jpa.domain.BlindDateNotFoundException
 import com.comento.jpa.domain.PersonNotFoundException
 import com.comento.jpa.domain.common.enums.Gender
+import com.comento.jpa.domain.country.CountryRepository
 import com.comento.jpa.domain.person.Person
 import com.comento.jpa.domain.person.PersonRepository
 import com.comento.jpa.logger
@@ -14,7 +15,8 @@ import javax.transaction.Transactional
 
 @Service
 class PersonService(
-    private val personRepository: PersonRepository
+    private val personRepository: PersonRepository,
+    private val countryRepository: CountryRepository
 ) {
 
 
@@ -45,7 +47,7 @@ class PersonService(
     fun registerOrSavePersons(personRequests: List<PersonDto>): ResultDto {
 
         val resultTypes = (1..personRequests.size).map { 0 }.toMutableList()
-        val personIds = (1..personRequests.size).map{ 2 }.toMutableList()
+        val personIds = (1..personRequests.size).map{ 2L }.toMutableList()
 
         val existedPersonIds = personRequests
             .filter { personDto -> personDto.personId?.let { personRepository.existsBy_id(it) } ?: false }
@@ -62,7 +64,7 @@ class PersonService(
                 if ( id in existedPersonIds ) resultTypes[index] = 0
                 else resultTypes[index] = 1
 
-                personIds[index] = id.toInt()
+                personIds[index] = id
             }
 
         return ResultDto(
@@ -72,7 +74,7 @@ class PersonService(
     }
 
     private fun convertToPerson(personDto: PersonDto): Person {
-        val ( personId: Int?, age: Int?, height: Int?, weight: Int?,
+        val ( personId: Long?, age: Int?, height: Int?, weight: Int?,
             name: String, gender: Gender?, isMarried: Boolean?, company: String?, country: String
         ) = personDto
 
@@ -80,17 +82,18 @@ class PersonService(
         height?.let { if (it !in (130..200) ) throw IllegalArgumentException("`height: $height` is not between 130 and 200") }
         weight?.let { if (it !in (30..200) ) throw IllegalArgumentException("`weight: $weight` is not between 30 and 200") }
 
-        val person = Person(
-            name = name,
-            gender = gender ?: Gender.UNKNOWN,
-            country = country
-        )
+        val person = Person().apply {
+            this.name = name
+            this.gender = gender ?: Gender.UNKNOWN
+            this.country = countryRepository.findCountryByName(country) ?: throw RuntimeException()
+            this.age = age
+            this.height = height
+            this.weight = weight
+            this.isMarried = isMarried ?: false
+            this.company = null
+        }
         personId?.let { person.updateId(it) }
-        person.age = age
-        person.height = height
-        person.weight = weight
-        person.isMarried = isMarried ?: false
-        person.company = company
+
         return person
     }
 

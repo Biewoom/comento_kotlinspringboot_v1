@@ -7,5 +7,5 @@ interface PersonRepository: CrudRepository<Person, Long> {
 
     fun findPeopleByGenderAndAgeNotNull(gender: Gender): List<Person>
 
-    fun existsBy_id(_id: Int): Boolean
+    fun existsBy_id(_id: Long): Boolean
 }
