@@ -2,7 +2,7 @@ CREATE TABLE person
 (
     person_id NUMBER(255) NOT NULL UNIQUE AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
-    gender TINYINT NOT NULL, -- 0 = UnKnown, 1 = Male, 2 = Female, 9 = Not Specified
+    gender TINYINT NOT NULL, -- 0 = UnKnown, 1 = Male, 2 = Female
     age NUMBER(10),
     height NUMBER(10),
     weight NUMBER(10),
