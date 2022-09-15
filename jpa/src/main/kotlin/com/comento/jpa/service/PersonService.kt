@@ -1,15 +1,37 @@
 package com.comento.jpa.service
 
+import com.comento.jpa.domain.BlindDateNotFoundException
 import com.comento.jpa.domain.company.Company
 import com.comento.jpa.domain.person.Gender
 import com.comento.jpa.domain.person.Person
 import com.comento.jpa.domain.person.PersonRepository
+import com.comento.jpa.presentation.BlindDateDto
 import com.comento.jpa.presentation.PersonRequest
 import com.comento.jpa.presentation.PersonResult
 import org.springframework.stereotype.Service
 
 @Service
 class PersonService(private val personRepository: PersonRepository) {
+    fun getCoupleList(ageDiff: Int): List<Pair<BlindDateDto, BlindDateDto>>{
+        val women = personRepository.findPeopleByGenderAndAgeNotNull(Gender.FEMALE)
+        val men = personRepository.findPeopleByGenderAndAgeNotNull(Gender.MALE)
+        val ll = mutableListOf<Pair<BlindDateDto, BlindDateDto>>()
+
+        men.forEach {man ->
+            women
+                .filter { man.age!! - ageDiff <= it.age!! && it.age!! <= man.age!! }
+                .forEach { woman ->
+                    ll.add(Pair(BlindDateDto.fromPerson(man), BlindDateDto.fromPerson(woman)))
+                }
+            women
+                .filter { man.age!! < it.age!! && it.age!! <= man.age!! + ageDiff  }
+                .forEach{ woman ->
+                    ll.add(Pair(BlindDateDto.fromPerson(woman), BlindDateDto.fromPerson(man)))
+                }
+        }
+        return ll.ifEmpty { throw BlindDateNotFoundException("BlindDate Candidates with ageDiff ` $ageDiff ` cannot be Found") }
+    }
+
     fun insertPeople(requests: List<PersonRequest>): PersonResult {
         val resultTypes = (1..requests.size).map { 0 }.toMutableList()
         val personIds = (1..requests.size).map{ 2 }.toMutableList()

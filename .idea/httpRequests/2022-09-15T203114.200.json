@@ -1,0 +1,22 @@
+[
+  {
+    "first": {
+      "name": "임은성",
+      "gender": "Female",
+      "age": 20,
+      "height": 171,
+      "weight": 61,
+      "company": "SAMSUNG",
+      "country": "KOREA"
+    },
+    "second": {
+      "name": "한도윤",
+      "gender": "Male",
+      "age": 15,
+      "height": null,
+      "weight": 80,
+      "company": "KAKAO",
+      "country": "KOREA"
+    }
+  }
+]

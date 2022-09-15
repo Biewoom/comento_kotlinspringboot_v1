@@ -1,3 +1,39 @@
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/7
+
+<> 2022-09-15T203136.200.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/4
+
+<> 2022-09-15T203126.500.txt
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/5
+
+<> 2022-09-15T203114.200.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/5
+
+<> 2022-09-15T203038.404.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/5
+
+<> 2022-09-15T203031.404.json
+
+###
+
+GET http://localhost:8080/api/v1/simple-crud/persons/blind-date/4
+
+<> 2022-09-15T203018.404.json
+
+###
+
 PUT http://localhost:8080/api/v1/simple-crud/persons
 Content-Type: application/json
 
@@ -611,81 +647,6 @@ Content-Type: application/json
 }
 
 <> 2022-09-04T093522.200.json
-
-###
-
-POST http://localhost:8080/api/v1/persons/filter
-Content-Type: application/json
-
-{
-  "ageCutoff": 30,
-  "heightCutoff": 170,
-  "except": ["ID1323"],
-  "persons": [
-    {
-      "id": "ID1001",
-      "name": "Tom",
-      "age": 10,
-      "height": 175
-    },
-    {
-      "id": "ID10401",
-      "name": "Alice",
-      "age": 61,
-      "height": 163
-    },
-    {
-      "id": "ID1324",
-      "name": "Holand",
-      "age": 20,
-      "height": 170
-    },
-    {
-      "id": "ID1031",
-      "name": "Junior",
-      "age": 40,
-      "height": 179
-    },
-    {
-      "id": "ID1323",
-      "name": "Goose",
-      "age": 34,
-      "height": 171
-    }
-  ]
-}
-
-<> 2022-09-02T215310.200.json
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/100.5111~1032.12
-
-<> f-5.txt
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/1.5~5.5
-
-<> f-4.txt
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/1.5~100.1555
-
-<> f-3.txt
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/0~100
-
-<> 2022-09-02T215025-1.200.json
-
-###
-
-GET http://localhost:8080/api/v1/calculator/generate/5~1000
-
-<> 2022-09-02T215025.200.json
 
 ###
 

@@ -72,6 +72,13 @@ class SimpleCrudControlle(private val countryService: CountryService,
         }
     }
 
-
+    @GetMapping("/persons/blind-date/{ageDiff}")
+    fun getCoupleList(@PathVariable("ageDiff") ageDiff: Int): ResponseEntity<*> {
+        return try{
+            ResponseEntity.ok().body(personService.getCoupleList(ageDiff))
+        }catch (e: Exception){
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
+        }
+    }
 
 }

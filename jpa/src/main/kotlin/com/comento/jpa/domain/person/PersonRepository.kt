@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository
 
 interface PersonRepository: CrudRepository<Person, Long> {
     fun existsBy_id(_id: Int): Boolean
+    fun findPeopleByGenderAndAgeNotNull(gender: Gender): List<Person>
 }
