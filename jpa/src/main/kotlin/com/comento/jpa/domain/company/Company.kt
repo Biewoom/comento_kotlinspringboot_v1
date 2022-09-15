@@ -1,4 +1,4 @@
-package com.comento.jpa.domain.country
+package com.comento.jpa.domain.company
 
 import javax.persistence.Column
 import javax.persistence.Entity

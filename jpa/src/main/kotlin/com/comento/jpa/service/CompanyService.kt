@@ -1,11 +1,8 @@
 package com.comento.jpa.service
 
 import com.comento.jpa.domain.CompanyNotFoundException
-import com.comento.jpa.domain.CountryNotFoundException
 import com.comento.jpa.domain.company.CompanyRepository
-import com.comento.jpa.domain.country.Company
-import com.comento.jpa.domain.country.CountryRepository
-import com.comento.jpa.logger
+import com.comento.jpa.domain.company.Company
 import com.comento.jpa.presentation.CompanyRequest
 import org.springframework.stereotype.Service
 

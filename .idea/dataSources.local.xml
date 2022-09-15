@@ -3,10 +3,9 @@
   <component name="dataSourceStorageLocal" created-in="IU-222.3739.54">
     <data-source name="default@localhost" uuid="c971904f-cb33-4f98-b4b2-a31931eb4283">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" exact-version="0" />
-      <secret-storage>master_key</secret-storage>
       <schema-mapping />
     </data-source>
-    <data-source name="H2" uuid="1fe9bfe0-65ca-4831-bfb9-1c77f10c78b1">
+    <data-source name="Inmemory H2" uuid="1fe9bfe0-65ca-4831-bfb9-1c77f10c78b1">
       <database-info product="H2" version="2.1.214 (2022-06-13)" jdbc-version="4.2" driver-name="H2 JDBC Driver" driver-version="2.1.210 (2022-01-17)" dbms="H2" exact-version="2.1.214" exact-driver-version="2.1">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -15,8 +14,8 @@
       <user-name>sa</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="database" qname="@">
-            <node kind="schema" qname="@" />
+          <node kind="database" negative="1">
+            <node kind="schema" negative="1" />
           </node>
         </introspection-scope>
       </schema-mapping>

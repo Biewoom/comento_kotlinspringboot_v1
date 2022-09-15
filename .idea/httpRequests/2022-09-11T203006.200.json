@@ -1,0 +1,20 @@
+[
+  {
+    "foundingDate": "1999-03-23",
+    "name": "META",
+    "country": "USA",
+    "id": 3
+  },
+  {
+    "foundingDate": "2005-11-04",
+    "name": "AMAZON",
+    "country": "USA",
+    "id": 2
+  },
+  {
+    "foundingDate": "2008-03-07",
+    "name": "GOOGLE",
+    "country": "USA",
+    "id": 1
+  }
+]
