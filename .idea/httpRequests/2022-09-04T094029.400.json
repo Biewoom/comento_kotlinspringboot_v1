@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-04T00:40:29.089+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/api/v1/calculator/calculate"
+}

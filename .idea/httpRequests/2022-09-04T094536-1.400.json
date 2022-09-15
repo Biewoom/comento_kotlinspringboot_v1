@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-08-27T14:26:40.350+00:00",
+  "timestamp": "2022-09-04T00:45:36.486+00:00",
   "status": 400,
   "error": "Bad Request",
   "path": "/api/v1/persons/sort"
