@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-15T11:30:31.757+00:00",
+  "status": 404,
+  "error": "Not Found",
+  "path": "/api/v1/simple-crud/persons/blind-date/5"
+}

@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-11T09:37:53.815+00:00",
+  "status": 404,
+  "error": "Not Found",
+  "path": "/api/v1/calculator/calculate"
+}

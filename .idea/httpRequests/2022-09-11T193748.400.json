@@ -1,0 +1,6 @@
+{
+  "timestamp": "2022-09-11T10:37:48.086+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/api/v1/simple-crud/company"
+}
