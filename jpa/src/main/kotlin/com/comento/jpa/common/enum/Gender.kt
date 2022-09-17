@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 // Jackson 이용하여 enum 직렬화 https://smelting.tistory.com/68
 enum class Gender(@JsonValue val genderStr: String) {
+    UNKNOWN(""),
     MALE("Male"),
-    FEMALE("Female"),
-    UNKNOWN("");
+    FEMALE("Female");
 
     companion object {
         @JsonCreator

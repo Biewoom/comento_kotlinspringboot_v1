@@ -1,5 +1,6 @@
 package com.comento.jpa.presentation
 
+import com.comento.jpa.domain.BlindDateNotFoundException
 import com.comento.jpa.presentation.dto.CompanyDto
 import com.comento.jpa.presentation.dto.PersonDto
 import com.comento.jpa.service.CompanyService
@@ -49,6 +50,21 @@ class SimpleCrudController(
         return try {
             ResponseEntity.ok().body(personService.upsertPersons(request))
         } catch (e: Exception){
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
+        }
+    }
+
+    /***
+     * response body : JsonArray
+     */
+    @GetMapping("/persons/blind-date/{ageDiff}")
+    fun searchCoupleCandidates(@PathVariable("ageDiff") ageDiff:Int) : ResponseEntity<*> {
+        return try {
+            ResponseEntity.ok().body(personService.blindDate(ageDiff))
+        } catch (e: Exception){
+            when (e){
+                is BlindDateNotFoundException -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.message)
+            }
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)
         }
     }

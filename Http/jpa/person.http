@@ -197,3 +197,15 @@ Content-Type: application/json
   "company" : "NAVER",
   "country" : "ENGLAND"
 } ]
+
+
+
+### 2-1
+http://localhost:8080/api/v1/simple-crud/persons/blind-date/4
+
+### 2-2
+http://localhost:8080/api/v1/simple-crud/persons/blind-date/5
+
+### 2-3
+http://localhost:8080/api/v1/simple-crud/persons/blind-date/7
+

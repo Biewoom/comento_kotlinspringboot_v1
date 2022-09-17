@@ -1,6 +1,7 @@
 package com.comento.jpa.domain
 
 import com.comento.jpa.common.enum.Gender
+import com.comento.jpa.presentation.dto.BlindDateDto
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
@@ -46,5 +47,9 @@ data class Person(
 
     fun updateId(id: Int) {
         this._id = id
+    }
+
+    fun toBlindDateDto(): BlindDateDto {
+        return BlindDateDto(name, gender, age ?: 0, height, weight, company, country)
     }
 }
