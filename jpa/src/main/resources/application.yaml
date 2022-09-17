@@ -27,6 +27,9 @@ spring:
       settings:
         web-allow-others: true
 
+#  jackson:
+#    property-naming-strategy: CAMEL_CASE
+
 springdoc:
   version: '0.0'
   swagger-ui:

@@ -7,6 +7,8 @@ plugins {
     kotlin("plugin.jpa")
 }
 
+val KOTEST_VERSION = "5.3.0"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -34,4 +36,16 @@ dependencies {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
         }
     }
+
+    // h2 DB for Test
+    testRuntimeOnly("com.h2database:h2")
+
+    // mockk
+    testImplementation("io.mockk:mockk:1.9.3")
+    // Kotest
+    testImplementation("io.kotest:kotest-runner-junit5:${KOTEST_VERSION}")
+    testImplementation("io.kotest:kotest-assertions-core:${KOTEST_VERSION}")
+
+    // SpringMockk
+    testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
