@@ -1,0 +1,201 @@
+###
+PUT localhost:8080/api/v1/simple-crud/persons
+Content-Type: application/json
+
+[ {
+  "person_id" : 1,
+  "age" : 48,
+  "height" : 196,
+  "weight" : 144,
+  "name" : "예철민",
+  "gender" : "Female",
+  "is_married" : null,
+  "company" : "DAEWO",
+  "country" : "CHINA"
+}, {
+  "person_id" : 10,
+  "age" : 36,
+  "height" : 159,
+  "weight" : 162,
+  "name" : "예철민",
+  "gender" : null,
+  "is_married" : null,
+  "company" : "DAEWO",
+  "country" : "ENGLAND"
+}, {
+  "person_id" : 3,
+  "age" : 3,
+  "height" : 168,
+  "weight" : 192,
+  "name" : "탁은우",
+  "gender" : null,
+  "is_married" : null,
+  "company" : "SHELL",
+  "country" : "VIETNAM"
+} ]
+###
+PUT localhost:8080/api/v1/simple-crud/persons
+Content-Type: application/json
+
+[ {
+"person_id" : 11,
+"age" : 44,
+"height" : 154,
+"weight" : 76,
+"name" : "허승기",
+"gender" : "Male",
+"is_married" : null,
+"company" : "SHELL",
+"country" : "RUSSIA"
+}, {
+"person_id" : 22,
+"age" : 4,
+"height" : 169,
+"weight" : 54,
+"name" : "탁창현",
+"gender" : "Male",
+"is_married" : false,
+"company" : "META",
+"country" : "ENGLAND"
+}, {
+"person_id" : 5,
+"age" : 13,
+"height" : 191,
+"weight" : 37,
+"name" : "설지태",
+"gender" : "Female",
+"is_married" : null,
+"company" : "SHELL",
+"country" : "ENGLAND"
+}, {
+"person_id" : 20,
+"age" : 81,
+"height" : 196,
+"weight" : 56,
+"name" : "사공서준",
+"gender" : "Female",
+"is_married" : null,
+"company" : "NAVER",
+"country" : "CHINA"
+}, {
+"person_id" : 28,
+"age" : 100,
+"height" : 153,
+"weight" : 43,
+"name" : "flatten",
+"gender" : "Female",
+"is_married" : true,
+"company" : "KAKAO",
+"country" : "CANADA"
+} ]
+
+###
+PUT localhost:8080/api/v1/simple-crud/persons
+Content-Type: application/json
+
+[ {
+  "person_id" : 1,
+  "age" : 78,
+  "height" : 174,
+  "weight" : 169,
+  "name" : "flatten",
+  "gender" : "Female",
+  "is_married" : null,
+  "company" : "NAVER",
+  "country" : "ENGLAND"
+}, {
+  "person_id" : 15,
+  "age" : 84,
+  "height" : 156,
+  "weight" : 112,
+  "name" : "김병욱",
+  "gender" : "Female",
+  "is_married" : null,
+  "company" : "META",
+  "country" : "VIETNAM"
+}, {
+  "person_id" : 21,
+  "age" : 86,
+  "height" : 178,
+  "weight" : 165,
+  "name" : "허승기",
+  "gender" : null,
+  "is_married" : true,
+  "company" : "SHELL",
+  "country" : "CHINA"
+}, {
+  "person_id" : 23,
+  "age" : 39,
+  "height" : 197,
+  "weight" : 98,
+  "name" : "문병희",
+  "gender" : "Male",
+  "is_married" : false,
+  "company" : "NAVER",
+  "country" : "IRELAND"
+}, {
+  "person_id" : 13,
+  "age" : 31,
+  "height" : 200,
+  "weight" : 71,
+  "name" : "문남일Agatha",
+  "gender" : "Female",
+  "is_married" : true,
+  "company" : "DAEWO",
+  "country" : "ENGLAND"
+}, {
+  "person_id" : 11,
+  "age" : 56,
+  "height" : 168,
+  "weight" : 151,
+  "name" : "설지태",
+  "gender" : null,
+  "is_married" : null,
+  "company" : "DAEWO",
+  "country" : "ENGLAND"
+}, {
+  "person_id" : 6,
+  "age" : 90,
+  "height" : 165,
+  "weight" : 106,
+  "name" : "추혜성",
+  "gender" : "Male",
+  "is_married" : false,
+  "company" : "NAVER",
+  "country" : "TAIWAN"
+}, {
+  "person_id" : 17,
+  "age" : 98,
+  "height" : 156,
+  "weight" : 106,
+  "name" : "loyalty",
+  "gender" : "Male",
+  "is_married" : true,
+  "company" : "GOOGLE",
+  "country" : "JAPAN"
+}, {
+  "person_id" : 30,
+  "age" : 3,
+  "height" : 156,
+  "weight" : 117,
+  "name" : "조인욱",
+  "gender" : "Female",
+  "is_married" : false,
+  "company" : "SHELL",
+  "country" : "VIETNAM"
+}, {
+  "person_id" : 0,
+  "age" : 23,
+  "height" : 158,
+  "weight" : 41,
+  "name" : "inch",
+  "gender" : "Male",
+  "is_married" : false,
+  "company" : "NAVER",
+  "country" : "ENGLAND"
+} ]
+
+
+###
+GET localhost:8080/api/v1/simple-crud/persons/blind-date/7
+
