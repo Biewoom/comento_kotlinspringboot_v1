@@ -1,0 +1,33 @@
+spring:
+  sql:
+    init:
+      schema-locations:
+        - classpath:sql/ddl/*
+      continue-on-error: false
+      mode: always
+      platform: h2
+      data-locations:
+        - classpath:sql/dml/*
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: h2
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password: password
+      driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+springdoc:
+  version: '0.0'
+  swagger-ui:
+    path: /openapi

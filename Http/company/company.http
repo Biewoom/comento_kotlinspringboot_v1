@@ -1,0 +1,16 @@
+GET localhost:8080/api/v1/simple-crud/companies/country/usa
+Accept: application/json
+
+###
+POST localhost:8080/api/v1/simple/company
+Content-Type: application/json
+
+{
+  "name": "Apple",
+  "founding_date": "2011-01-22",
+  "country": "USA"
+}
+
+###
+GET localhost:8080/api/v1/company/country/KOREA
+Accept: application/json

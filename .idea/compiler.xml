@@ -2,14 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
-      <module name="comento_kotlinspringboot_v1.main" target="11" />
-      <module name="comento_kotlinspringboot_v1.test" target="11" />
       <module name="dbless" target="11" />
       <module name="dbless.main" target="11" />
       <module name="dbless.test" target="11" />
       <module name="jpa" target="11" />
       <module name="jpa.main" target="11" />
       <module name="jpa.test" target="11" />
+      <module name="root.main" target="11" />
+      <module name="root.test" target="11" />
+      <module name="untitled" target="11" />
+      <module name="untitled.main" target="11" />
+      <module name="untitled.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,3 +1,3 @@
-rootProject.name = "comento_kotlinspringboot_v1"
+rootProject.name = "root"
 include("dbless")
 include("jpa")

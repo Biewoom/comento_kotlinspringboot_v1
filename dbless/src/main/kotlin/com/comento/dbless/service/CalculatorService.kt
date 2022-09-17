@@ -1,113 +1,116 @@
 package com.comento.dbless.service
 
+import com.comento.dbless.domain.Divide
+import com.comento.dbless.domain.Expr
+import com.comento.dbless.domain.Minus
+import com.comento.dbless.domain.Num
+import com.comento.dbless.domain.Pow
+import com.comento.dbless.domain.Sum
+import com.comento.dbless.domain.Time
+import com.comento.dbless.logger
+import com.comento.dbless.toNumber
+import com.comento.dbless.toRound
 import org.springframework.stereotype.Service
-import kotlin.math.pow
+import java.lang.Math.max
 import kotlin.random.Random
+
+private fun String.getDecimalPoint() = this.split(".").getOrNull(1)?.length ?: 0
+private inline fun <T> List<T>.lastIndexOrNull(predicate: (T) -> Boolean): Int? = run {
+    val res = this.indexOfLast(predicate)
+    if (res == -1) null
+    else res
+}
 
 @Service
 class CalculatorService {
-    /**
-     * String util : .있으면 double 없으면 int
-     */
-    private fun String.toNumber(): Number {
-        return when (this.contains(".")) {
-            true -> this.toDouble()
-            false -> this.toInt()
-        }
-    }
+    fun getRandomNum(range: String): Number {
 
-    /**
-     * String util : 소수점 자리수 리턴
-     */
-    private fun String.getDecimalPlace(): Int {
-        val str_arr = this.split(".")
+        if (!range.contains("~")) throw IllegalArgumentException("request should contain `~`")
 
-        if (str_arr.size == 2) {
-            return str_arr.get(1).length
-        } else {
-            return 0
-        }
-    }
+        val numbers = range.filter { !it.isWhitespace() }.split("~")
 
-    /**
-     * 소수점 반올림 함수
-     */
-    private fun Double.round(digits: Int): Double {
-        return Math.round(this * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
-    }
+        if ( numbers.size != 2 ) throw IllegalArgumentException("request should contain `2 number values`")
 
-    /**
-     * 사용자 지정 범위 내의 랜덤 숫자 반환 함수
-     */
-    fun makeRandomNumber(first: String, last: String): Number {
-        val firstN = first.toNumber()
-        val lastN = last.toNumber()
+        val (start, end) = numbers
+        logger.info("start: $start , end: $end")
+
+        val startNum = start.toNumber()
+        val endNum = end.toNumber()
+
+        val startNumDecimalPoint = start.getDecimalPoint()
+        val endNumDecimalPoint = end.getDecimalPoint()
+        logger.info("startNum: $startNum , end: $endNum")
+        logger.info("startNumCounting: $startNumDecimalPoint , endNumCounting: $endNumDecimalPoint")
 
         return when {
-            firstN is Int && lastN is Int -> Random.nextInt(firstN, lastN)
-            else -> {
-                Random.nextDouble(firstN.toDouble(), lastN.toDouble())
-                    .round(Math.max(first.getDecimalPlace(), last.getDecimalPlace()))
+            startNum is Long && endNum is Long -> Random.nextLong(startNum, endNum)
+            else -> Random.nextDouble(startNum.toDouble(), endNum.toDouble())
+                .toRound(max(startNumDecimalPoint, endNumDecimalPoint))
+        }
+    }
+
+    fun calculate(expr: String, roundNum: Int): Double {
+        val ll = makeStringList(expr)
+        val expr = parseExpression(ll)
+        return expr.evalFun().toRound(roundNum)
+    }
+
+    private fun makeStringList(str: String): List<String> {
+        if (str.isEmpty()) return emptyList()
+        val res = mutableListOf<String>()
+
+        val strWithoutSpace = str.filter { !it.isWhitespace() }
+
+        var num = ""
+        strWithoutSpace.forEach {
+            if (it in listOf('+', '-', '*', '/', '^')) {
+                res.add(num)
+                res.add(it.toString())
+                num = ""
+            } else {
+                if (!it.isDigit()) throw IllegalArgumentException("`$it` should be digit ")
+                num += it
             }
         }
+        res.add(num)
+        return res.toList()
     }
 
-    /**
-     * 특정 값 없음 -1 리턴
-     */
-    private fun List<String>.findIndex(item: String): Int {
-        for (i in this.indices) {
-            if (this[i] == item) return i
+    private fun parseExpression(ll: List<String>): Expr {
+        if (ll.size == 1) return Num(ll[0].toDouble())
+
+        ll.lastIndexOrNull { it == "+" || it == "-" }?.let {
+            when (ll[it]) {
+                "+" -> return Sum(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+                else -> return Minus(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+            }
         }
-        return -1
+        ll.lastIndexOrNull { it == "*" || it == "/" }?.let {
+            when (ll[it]) {
+                "*" -> return Time(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+                else -> return Divide(
+                    parseExpression(ll.subList(0, it)),
+                    parseExpression(ll.subList(it + 1, ll.size))
+                )
+            }
+        }
+        ll.lastIndexOrNull { it == "^" }?.let {
+            return Pow(
+                parseExpression(ll.subList(0, it)),
+                parseExpression(ll.subList(it + 1, ll.size))
+            )
+        }
+        throw IllegalArgumentException("$ll cannot reach this line")
     }
-
-    /**
-     *  * or / 와 같이 두개 비교
-     */
-    private fun List<String>.findIndex(item: String, item2: String): Int {
-        for (i in this.indices) {
-            if (this[i] == item || this[i] == item2) return i
-        }
-        return -1
-    }
-
-    /**
-     * 연산 하드코딩
-     */
-    fun calculating(value: List<String>, decimalPlace: Int) : Number {
-        val mutableValues: MutableList<String> = value.toMutableList()
-
-        while (mutableValues.findIndex("^") != -1) {
-            val index = mutableValues.findIndex("^")
-            mutableValues[index - 1] =
-                mutableValues[index - 1].toDouble().pow(mutableValues[index + 1].toDouble()).toString()
-            mutableValues.removeAt(index + 1)
-            mutableValues.removeAt(index)
-        }
-
-        while (mutableValues.findIndex("*", "/") != -1) {
-            val index = mutableValues.findIndex("*", "/")
-            if (mutableValues[index] == "*") mutableValues[index - 1] =
-                (mutableValues[index - 1].toDouble() * mutableValues[index + 1].toDouble()).toString()
-            else mutableValues[index - 1] =
-                (mutableValues[index - 1].toDouble() / mutableValues[index + 1].toDouble()).toString()
-            mutableValues.removeAt(index + 1)
-            mutableValues.removeAt(index)
-        }
-
-        while (mutableValues.findIndex("+","-") != -1) {
-            val index = mutableValues.findIndex("+", "-")
-            if (mutableValues[index] == "+") mutableValues[index - 1] =
-                (mutableValues[index - 1].toDouble() + mutableValues[index + 1].toDouble()).toString()
-            else mutableValues[index - 1] =
-                (mutableValues[index - 1].toDouble() - mutableValues[index + 1].toDouble()).toString()
-            mutableValues.removeAt(index + 1)
-            mutableValues.removeAt(index)
-        }
-
-        return mutableValues.get(0).toDouble().round(decimalPlace)
-    }
-
 
 }
+
